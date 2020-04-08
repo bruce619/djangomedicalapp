@@ -163,7 +163,7 @@ def pie_chart(request):
         labels.append(entry['illness'])
         data.append(entry['count'])
 
-    return JsonResponse(data={
+    return render(request, 'chart.html', {
         'labels': labels,
         'data': data,
     })

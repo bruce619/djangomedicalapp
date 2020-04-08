@@ -161,4 +161,10 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+import django_heroku
+django_heroku.settings(locals())
 
