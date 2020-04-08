@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Record Details{% endblock %}
+{% load static %}
+
+{% block content %}
+{% include 'sidebar.html' %}
+       <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+                {% if object.user == user %}
+                <div>
+                <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'update-medical-record' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete-medical-record' object.id %}">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+          </div>
+       </article>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-client-dashboard">
+                            <thead>
+                            <tr>
+                                <th>illness</th>
+                                <th>symptoms</th>
+                                <th>additional_info</th>
+                                <th>disability</th>
+                                <th>medications</th>
+                                <th>created_at</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {{ object.illness }}
+                                    </td>
+                                    <td>
+                                        {{ object.symptoms }}
+                                    </td>
+                                    <td>
+                                        {{ object.additional_info }}
+                                    </td>
+                                    <td>
+                                        {{ object.disability }}
+                                    </td>
+                                    <td>
+                                        {{ object.medications }}
+                                    </td>
+                                    <td>
+                                        {{ object.created_at }}
+                                    </td>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--Pagination-->
+                    {% if is_paginated %}
+
+                        {% if page_obj.has_previous %}
+                            <a class="btn btn-info mb-4" href="?page=1">First</a>
+                            <a class="btn btn-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+
+                         {% if page_obj.has_next %}
+                            <a class="btn btn-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                            <a class="btn btn-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                         {% endif %}
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Users Record{% endblock %}
+
+{% block content %}
+{% include 'sidebar.html' %}
+
+{% if records %}
+    {% for record in records %}
+       <ul class="job-listings mb-5">
+                  <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+                        <a class="mr-2" href="{% url 'medical-record-detail' record.id %}"></a>
+                    <div class="job-listing-logo">
+                        <img src="{% static 'img/logo.jpg' %}" alt="Free Website Template by Free-Template.co" class="img-fluid">
+                    </div>
+
+                    <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                      <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                        <h4>{{ record.user.get_full_name }} Medical Record</h4>
+                      </div>
+                        <div class="col-10 col-md-3 col-lg-3 ml-auto">
+                            <p>Posted {{ record.created_at|timesince }}</p>
+                        </div>
+                    </div>
+                  </li>
+                </ul>
+    {% endfor %}
+{% else %}
+<br>
+    <h3><b>There are no jobs Available</b></h3>
+{% endif %}
+
+
+
+    {% if is_paginated %}
+
+        {% if page_obj.has_previous %}
+            <a class="btn btn-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+
+         {% if page_obj.has_next %}
+            <a class="btn btn-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+         {% endif %}
+
+    {% endif %}
+{% endblock %}
