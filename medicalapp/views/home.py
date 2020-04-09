@@ -1,13 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from ..filters import Filter
-from django.db.models import Case, IntegerField, Sum, When, Count
-from django.http import JsonResponse
-from pprint import pprint
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django_filters.views import FilterView
-from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMessage
 from django.template.loader import get_template
 import sweetify
@@ -86,6 +82,7 @@ class CreateMedicalRecordView(LoginRequiredMixin, CreateView):
     form_class = MedicalHistoryForm
     template_name = 'createrecords.html'
     success_url = reverse_lazy('home')
+    context_object_name = 'medicalhistory'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
