@@ -8,7 +8,7 @@
         {% block extrahead %}                     {# Extra Resources Start #}
         {{ form.media }}                          {# Form required JS and CSS #}
     {% endblock %}                                {# Extra Resources End #}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Django Health App{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
     <!--Bootstrap css-->
@@ -22,9 +22,9 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="{% static 'js/sweetalert2.all.min.js' %}"></script>
     <!--===============================================================================================-->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" href="{% static 'css/job.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="{% static 'css/full-width-pics.css' %}">
 </head>
 <body>
 
@@ -36,6 +36,8 @@
 <script type="text/javascript" src="{{ STATIC_URL }} /static/jquery-3.4.1.min.js"></script>
 <!--==============================================================================================-->
 <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<!--==============================================================================================-->
+<script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <!-- Font Awesome JS -->
 <script type="text/javascript" src="{% static 'fontawesome5.4.2/js/solid.js' %}"></script>
 <!--==============================================================================================-->
@@ -48,7 +50,7 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
-  </script>
+ </script>
 <script>
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
 var dropdown = document.getElementsByClassName("dropdown-toggle");

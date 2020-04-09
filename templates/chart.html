@@ -4,9 +4,9 @@
 
 {% block content %}
 {% include 'sidebar.html' %}
-<div id="container" style="width: 85%;">
+<div id="container" style="width: 95%;">
     <canvas id="myChart"></canvas>
-</div>
+  </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script>
 var ctx = document.getElementById('myChart');
@@ -18,16 +18,15 @@ var myChart = new Chart(ctx, {
             label: 'Overview of Medical History',
             data: {{ data|safe }},
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
+                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
-                'rgba(225, 120, 74, 0.2)',
-                'rgba(225, 450, 64, 0.2)',
-                'rgba(225, 200, 70, 0.2)',
-                'rgba(225, 77, 64, 0.2)'
-
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(155, 100, 60, 0.2)',
+                'rgba(355, 259, 34, 0.2)',
+                'rgba(75, 139, 234, 0.2)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -35,10 +34,10 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 109, 64, 1)',
-                'rgba(255, 209, 54, 1)',
-                'rgba(255, 109, 67, 1)',
-                'rgba(255, 129, 24, 1)'
+                'rgba(255, 159, 64, 1)',
+                'rgba(155, 100, 60, 1)',
+                'rgba(355, 259, 34, 1)',
+                'rgba(75, 139, 234, 1)'
 
             ],
             borderWidth: 1

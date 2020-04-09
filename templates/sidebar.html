@@ -4,7 +4,11 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><img style="width: 100%;" src="{% static 'img/healthpeople-41.jpg' %}"></div>
+      <div class="sidebar-heading">
+          <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-light">
+          <img style="width: 100%;" src="{% static 'img/healthpeople-41.jpg' %}">
+          </a>
+      </div>
       {% if user.is_authenticated %}
       <div class="list-group list-group-flush">
           <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-light">Home</a>
@@ -19,6 +23,7 @@
       </div>
       {% else %}
        <div class="list-group list-group-flush">
+         <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-light">Home</a>
         <a href="{% url 'pie-chart' %}" class="list-group-item list-group-item-action bg-light">Medical Overview</a>
         <a href="{% url 'contact' %}" class="list-group-item list-group-item-action bg-light">Contact Us</a>
        </div>
