@@ -44,12 +44,24 @@
                                     <td>
                                         {{ object.additional_info }}
                                     </td>
+                                    {% if object.disability %}
                                     <td>
-                                        {{ object.disability }}
+                                        <span class="badge badge-success">Yes</span>
                                     </td>
+                                    {% else %}
                                     <td>
-                                        {{ object.medications }}
+                                        <span class="badge badge-secondary">No</span>
                                     </td>
+                                    {% endif %}
+                                    {% if object.medications %}
+                                    <td>
+                                        <span class="badge badge-success">Yes</span>
+                                    </td>
+                                    {% else %}
+                                    <td>
+                                        <span class="badge badge-secondary">No</span>
+                                    </td>
+                                    {% endif %}
                                     <td>
                                         {{ object.created_at }}
                                     </td>

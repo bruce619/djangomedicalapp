@@ -35,7 +35,7 @@
                         <table class="table table-striped table-hover table-client-dashboard">
                             <thead>
                             <tr>
-                                <th>User ID</th>
+                                <th>Patient ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Sex</th>
@@ -83,12 +83,24 @@
                                     <td>
                                         {{ patient.additional_info }}
                                     </td>
+                                    {% if patient.disability %}
                                     <td>
-                                        {{ patient.disability }}
+                                        <span class="badge badge-success">Yes</span>
                                     </td>
+                                    {% else %}
                                     <td>
-                                        {{ patient.medications }}
+                                        <span class="badge badge-secondary">No</span>
                                     </td>
+                                    {% endif %}
+                                    {% if patient.medications %}
+                                    <td>
+                                        <span class="badge badge-success">Yes</span>
+                                    </td>
+                                    {% else %}
+                                    <td>
+                                        <span class="badge badge-secondary">No</span>
+                                    </td>
+                                    {% endif %}
                                     <td>
                                         {{ patient.created_at }}
                                     </td>
