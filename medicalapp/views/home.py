@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from ..filters import Filter
 from django.db.models import Case, IntegerField, Sum, When, Count
 from django.http import JsonResponse
+from pprint import pprint
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django_filters.views import FilterView
@@ -153,21 +154,23 @@ class RecordDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
 
 
-@login_required(login_url=reverse_lazy('login'))
 def pie_chart(request):
-    labels = []
-    data = []
+    count = {'Anxiety': 0, 'Arthritis': 0, 'Asthma': 0, 'Anemia': 0, 'Cancer': 0,
+             'Corona_virus': 0, 'Diabetes': 0, 'Ebola': 0, 'HIV': 0
+             }
 
-    queryset = MedicalHistory.objects.values('illness').annotate(count=Sum('user')).order_by('-count')
+    queryset = MedicalHistory.objects.values('illness')
     for entry in queryset:
-        labels.append(entry['illness'])
-        data.append(entry['count'])
+        for values in entry['illness']:
+            count[values] += 1
+
+    labels = [*count.keys()]
+    data = [*count.values()]
 
     return render(request, 'chart.html', {
         'labels': labels,
         'data': data,
     })
-
 
 
 def error_404(request, exception):

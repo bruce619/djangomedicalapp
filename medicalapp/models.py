@@ -3,22 +3,30 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 
-AILMENT_CHOICES = (
-    ("Anxiety", "Anxiety"),
-    ("Arthritis", "Arthritis"),
-    ("Asthma", "Asthma"),
-    ("Anemia", "Anemia"),
-    ("Cancer", "Cancer"),
-    ("Covid-19", "Covid-19"),
-    ("Diabetes", "Diabetes"),
-    ("Ebola", "Ebola"),
-    ("HIV", "HIV"),
-)
-
 
 class MedicalHistory(models.Model):
+    Anxiety = 'Anxiety'
+    Arthritis = 'Arthritis'
+    Asthma = 'Asthma'
+    Anemia = 'Anemia'
+    Cancer = 'Cancer'
+    Corona_virus = 'Corona_virus'
+    Diabetes = 'Diabetes'
+    Ebola = 'Ebola'
+    HIV = 'HIV'
+    ILLNESS_CHOICES = (
+        (Anxiety, "Anxiety"),
+        (Arthritis, "Arthritis"),
+        (Asthma, "Asthma"),
+        (Anemia, "Anemia"),
+        (Cancer, "Cancer"),
+        (Corona_virus, "Corona_virus"),
+        (Diabetes, "Diabetes"),
+        (Ebola, "Ebola"),
+        (HIV, "HIV"),
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    illness = MultiSelectField(choices=AILMENT_CHOICES, max_length=50)
+    illness = MultiSelectField(choices=ILLNESS_CHOICES, max_length=50)
     symptoms = models.CharField(max_length=100)
     additional_info = models.CharField(max_length=100)
     disability = models.BooleanField(default=False)
