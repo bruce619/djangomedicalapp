@@ -17,7 +17,7 @@
         <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
           {% endif %}
         <a href="{% url 'create-medical-record' %}" class="list-group-item list-group-item-action bg-light">Create Medical Record</a>
-        <a href="{% url 'medical-record-list' %}" class="list-group-item list-group-item-action bg-light">My Personal data</a>
+        <a href="{% url 'medical-record-list' %}" class="list-group-item list-group-item-action bg-light">My Medical Record</a>
         <a href="{% url 'pie-chart' %}" class="list-group-item list-group-item-action bg-light">Medical Overview</a>
         <a href="{% url 'contact' %}" class="list-group-item list-group-item-action bg-light">Contact Us</a>
       </div>
@@ -47,7 +47,7 @@
             <li class="nav-item">
                Welcome <b>{{ user.first_name }} {{user.last_name}} </b>
                 <button type="button" style="font-size: 70%;" class="btn btn-outline-danger">
-                  <a href="{% url 'logout' %}" style="color:black;">
+                  <a href="{% url 'logout' %}" class="nav-link" style="color:black;">
                       <i class="fa fa-user-times"></i> Logout
                   </a>
                </button>

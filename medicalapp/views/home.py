@@ -122,8 +122,9 @@ class RecordDetailView(DetailView):
 # Update a Medical Record
 class RecordUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = MedicalHistory
-    fields = ['illness', 'symptoms', 'additional_info', 'disability', 'medications']
-    template_name = 'createrecords.html'
+    # fields = ['illness', 'symptoms', 'additional_info', 'disability', 'medications']
+    form_class = MedicalHistoryForm
+    template_name = 'update_form.html'
     pk_url_kwarg = 'id'
     success_url = reverse_lazy('medical-record-list')
 

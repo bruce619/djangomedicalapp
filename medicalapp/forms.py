@@ -9,12 +9,11 @@ class MedicalHistoryForm(forms.ModelForm):
         fields = ('illness', 'symptoms', 'additional_info', 'disability', 'medications',)
         exclude = ('user', 'created_at',)
         labels = {
-            'illness': 'Select a Medical Illness if you have any',
-            'symptoms': 'What are the Symptoms you are experiencing',
-            'additional_info': 'Additional Info',
+            'illness': 'Select Illness/Illnesses you have or have been treated of',
+            'symptoms': 'What Are The Symptoms You Are Experiencing. if None write "No Symptoms" ',
+            'additional_info': 'Provide Other Illness/Illnesses you have or have been treated of. if None write "No Additional Information"',
             'disability': 'Do you have any Disability?',
             'medications': 'Are you on any Medications?',
-
         }
 
 

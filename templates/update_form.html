@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Create Medical Records{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'sidebar.html' %}
+<div class="container py-3">
+    <div class="row">
+        <div class="mx-auto col-sm-9">
+                    <!-- form user info -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0" style="text-align:center;">Fill Your Medical History</h4>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" method="POST" action="" enctype="multipart/form-data" role="form" autocomplete="off">
+                                {% csrf_token %}
+                                <fieldset class="form-group">
+                                    {{ form|crispy }}
+                                </fieldset>
+                                <div class="form-group">
+                                    <button class="btn btn-group-vertical btn-sm btn-success" type="submit">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /form user info -->
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+{% endblock %}
