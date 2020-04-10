@@ -11,33 +11,33 @@
 <script>
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'pie',
     data: {
         labels: {{ labels|safe }},
         datasets: [{
             label: 'Overview of Medical History',
             data: {{ data|safe }},
             backgroundColor: [
-                 'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
+                'rgba(8, 63, 62, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
-                'rgba(155, 100, 60, 0.2)',
-                'rgba(355, 259, 34, 0.2)',
-                'rgba(75, 139, 234, 0.2)'
+                'rgba(48, 201, 137, 0.2)',
+                'rgba(81, 48, 201, 0.2)',
+                'rgba(94, 7, 62, 0.2)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
+                'rgba(8, 63, 62, 1)',
                 'rgba(255, 159, 64, 1)',
-                'rgba(155, 100, 60, 1)',
-                'rgba(355, 259, 34, 1)',
-                'rgba(75, 139, 234, 1)'
+                'rgba(48, 201, 137, 1)',
+                'rgba(81, 48, 201, 1)',
+                'rgba(94, 7, 62, 1)'
 
             ],
             borderWidth: 1
