@@ -1,3 +1,2 @@
-*.css linguist-detectable=false
-*.python linguist-detectable=true
+./Source/datasets/lexicon/* linguist-language=Python
 
