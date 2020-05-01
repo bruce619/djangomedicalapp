@@ -159,7 +159,7 @@ def pie_chart(request):
 
     queryset = MedicalHistory.objects.values('illness')
     for entry in queryset:
-        for values in entry['illness']:
+        for keys, values in entry.items():
             count[values] += 1
 
     labels = [*count.keys()]
