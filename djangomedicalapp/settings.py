@@ -23,11 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&5$te53=*1cq91@kmihwrh0)of+-9+p@+npr^s*vi(gsd^=cl0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['djangomedicalapp.herokuapp.com']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['djangomedicalapp.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -165,10 +165,10 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
-import django_heroku
-django_heroku.settings(locals())
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+#
+# import django_heroku
+# django_heroku.settings(locals())
 
