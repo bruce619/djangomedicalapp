@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
-from ..filters import Filter
+from ..filters import PatientFilter
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django_filters.views import FilterView
@@ -61,14 +61,14 @@ def contact(request):
 class DashboardView(FilterView, LoginRequiredMixin):
     model = MedicalHistory
     template_name = 'dashboard.html'
-    filterset_class = Filter
+    filterset_class = PatientFilter
     paginate_by = 5
-    ordering = ['id']
+    ordering = ['-id']
     strict = False
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filter'] = Filter(self.request.GET, queryset=self.get_queryset())
+        context['filter'] = PatientFilter(self.request.GET, queryset=self.get_queryset())
         query = self.request.GET.copy()
         if 'page' in query:
             del query['page']

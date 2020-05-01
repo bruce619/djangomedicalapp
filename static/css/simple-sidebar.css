@@ -13,10 +13,7 @@ body {
 }
 
 #sidebar-wrapper {
-  min-height: 200vh;
-  max-height: 100%;
-  min-width: 250px;
-  max-width: 250px;
+  min-height: 180vh;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;

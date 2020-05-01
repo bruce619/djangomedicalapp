@@ -20,7 +20,7 @@
                         {{ filter.form|bootstrap }}
                     </fieldset>
                     <div class="form-group">
-                        <button class="btn btn-warning job-main-form__button" type="submit"><i class="fa fa-search"></i>Filter Candidates</button>
+                        <button class="btn btn-warning job-main-form__button" type="submit"><i class="fa fa-search"></i>Filter Patients</button>
                     </div>
                 </form>
             </div>
@@ -29,6 +29,7 @@
     </section>
         <section>
         <div class="container">
+            {% if object_list %}
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
@@ -54,7 +55,7 @@
                             {% for patient in object_list %}
                                 <tr>
                                     <td>
-                                        {{ patient.user.id }}
+                                        {{ patient.id }}
                                     </td>
                                     <td>
                                         {{ patient.user.get_full_name }}
@@ -108,31 +109,36 @@
                             </tbody>
                         </table>
                     </div>
-                    <!--Pagination-->
-                    {% if is_paginated %}
+
+                </div>
+            </div>
+            {% else %}
+            <br>
+                <p><b>Sorry No Patient Found</b></p>
+            {% endif %}
+            <!--Pagination-->
+                   {% if is_paginated %}
 
                         {% if page_obj.has_previous %}
-                            <a class="btn btn-info mb-4" href="?page=1">First</a>
-                            <a class="btn btn-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            <a style="background: #00ABF0;" class="btn btn-info mb-4" href="?{{ queries.urlencode }}&amp;page=1">First</a>
+                            <a style="background: #00ABF0;"  class="btn btn-info mb-4" href="?{{ queries.urlencode }}&amp;page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
                         {% endif %}
 
                         {% for num in page_obj.paginator.page_range %}
                             {% if page_obj.number == num %}
-                                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                                <a style="background: #00ABF0;"  class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
                             {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                                <a style="background: #00ABF0;"  class="btn btn-info mb-4" href="?{{ queries.urlencode }}&amp;page={{ num }}">{{ num }}</a>
                             {% endif %}
                         {% endfor %}
 
 
                          {% if page_obj.has_next %}
-                            <a class="btn btn-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-                            <a class="btn btn-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                            <a style="background: #00ABF0;"  class="btn btn-info mb-4" href="?{{ queries.urlencode }}&amp;page={{ page_obj.next_page_number }}">Next</a>
+                            <a style="background: #00ABF0;"  class="btn btn-info mb-4" href="?{{ queries.urlencode }}&amp;page={{ page_obj.paginator.num_pages }}">Last &laquo;</a>
                          {% endif %}
-
                     {% endif %}
-                </div>
-            </div>
+
         </div>
     </section>
 

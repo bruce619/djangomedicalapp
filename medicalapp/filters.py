@@ -2,13 +2,12 @@ import django_filters
 from .models import MedicalHistory
 
 
-class Filter(django_filters.FilterSet):
+class PatientFilter(django_filters.FilterSet):
 
     class Meta:
         model = MedicalHistory
-        fields = ('illness',)
+        fields = ('id',)
         labels = {
             'illness': 'Choose any illness to filter by',
-
+            'id': 'Patient ID',
         }
-
