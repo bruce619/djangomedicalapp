@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Create Medical Records{% endblock %}
 {% load static %}
-{% load is_already_applied %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -9,13 +8,6 @@
 <div class="container py-3">
     <div class="row">
         <div class="mx-auto col-sm-9">
-            {% is_already_applied request.user as is_applied %}
-                {% if is_applied %}
-                    <br/><br/><br/><br/>
-                        <a href="{% url 'medical-record-list' %}">
-                            <input type="button" class="btn btn-success" value="You Already Have A Medical Record, Click To View It"/>
-                        </a>
-                {% else %}
                     <!-- form user info -->
                     <div class="card">
                         <div class="card-header">
@@ -34,7 +26,6 @@
                         </div>
                     </div>
                     <!-- /form user info -->
-                {% endif %}
         </div>
     </div>
 </div>
