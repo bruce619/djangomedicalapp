@@ -6,7 +6,6 @@
 {% include 'sidebar.html' %}
 
 {% if records %}
-    {% for record in records %}
        <ul class="job-listings mb-5">
                   <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
                         <a class="mr-2" href="{% url 'medical-record-detail' record.id %}"></a>

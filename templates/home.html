@@ -3,7 +3,6 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% include 'sidebar.html' %}
 <!-- Header - set the background image for the header in the line below -->
   <header class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1076');">
     <img class="img-fluid d-block mx-auto" src="{% static 'img/small.png' %}" alt="">
@@ -45,15 +44,5 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Health For All 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-  </div>
-     <!-- /#page-content-wrapper -->
-</div>
-  <!-- /#wrapper -->
+
 {% endblock %}
